@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from copy import deepcopy
 from character_data import characters_info_original
-
+#a;sdfjkasdf
 
 def find_team(main_character, owned_characters_original, selected_team_type):
     owned_characters = owned_characters_original
