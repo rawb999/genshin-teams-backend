@@ -941,7 +941,7 @@ characters_info_original = {
                     "ayato",
                     "kokomi",
                     "barbara",
-                    "xinqiu",
+                    "xingqiu",
                     "yelan",
                     "tartaglia",
                     "candace",
