@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from copy import deepcopy
 from character_data import characters_info_original
-#a;sdfjkasdf
+
 
 def find_team(main_character, owned_characters_original, selected_team_type):
     owned_characters = owned_characters_original
@@ -23,6 +23,19 @@ def find_team(main_character, owned_characters_original, selected_team_type):
     group_counts = {group_name: 0 for group_name in character_groups}
     recommended_characters = team_specs.get("recommended_teammates", [])
     owned_characters = sorted(owned_characters, key=lambda x: characters_info[x]["rank"]) #sort based on rank lower # is higher rank
+    recommended_characters = sorted(recommended_characters, key=lambda x: characters_info[x]["rank"])
+    mandatory_characters = team_specs.get("mandatory", [])
+    removed_characters = []
+
+
+    if len(characters_info[team[0]]['role']) == 1 and characters_info[team[0]]['role'][0] == 'on-field':
+                print('called')
+                for x in owned_characters:
+                    if len(characters_info[x]['role']) == 1 and characters_info[x]['role'][0] == 'on-field':
+                        print('removed ' + x)
+                        removed_characters.append(x)
+                        owned_characters.remove(x)
+                        
 
 
     # if there is a specific combo of role + element required, look for characters that satisfy this
@@ -41,10 +54,15 @@ def find_team(main_character, owned_characters_original, selected_team_type):
             if candidate in members:
                 if group_counts[group_name] >= character_groups_amounts[group_name]:
                     return True
-                else:
-                    group_counts[group_name] += 1
-                    return False
         return False
+    
+    def group_limit_add(added):
+        for group_name, members in character_groups.items():
+            if added in members: 
+                group_counts[group_name] += 1
+                return True
+        return False
+
 
     # AT SOME POINT SORT THE OWNED CHARACTERS LISTS AND RECOMMENDED CHARACTERS LIST BY A TIER LIST ORDER BEFORE SORT
     # AT SOME POINT MAKE IT SO IF IT DOESN'T GET ALL OF THE CHARACTERS TO BE PROPERLY ON-ELEMENT AND ON-ROLE, IT NOTIFIES THE USER THEY DONT HAVE THE NECESSARY CHARACTERS
@@ -75,25 +93,28 @@ def find_team(main_character, owned_characters_original, selected_team_type):
         else:
             fits_role = True
         if check_elements:
-            if (4 - len(team)) > len(required_roles):
+            if (4 - len(team)) > len(required_elements):
                 fits_element = True
             for x in required_elements:
                 if char_info["element"] in x:
                     fits_element = True
         else:
             fits_element = True
+
         if fits_role and fits_element:
             team.append(char_name)
+            group_limit_add(char_name)
             removedRole = False
             removedElement = False
 
             while removedRole is False and required_roles:
-                for x in char_info["role"]:  # check each value in character roles
-                    for y in required_roles: # iterate over every list inside required_roles
-                        if x in y:  # the role is in that list
+                for x in required_roles:  # check each value in character roles
+                    for y in char_info["role"]: # iterate over every list inside required_roles
+                        if y in x:  # the role is in that list
                             required_roles.remove(
-                                y
+                                x
                             )  # remove the whole list because that slot is filled
+                            print(required_roles)
                             removedRole = True
                             break
                     if removedRole:
@@ -109,9 +130,39 @@ def find_team(main_character, owned_characters_original, selected_team_type):
                 if not removedElement:
                     break
             owned_characters.remove(char_name)
+            if len(char_info['role']) == 1 and char_info['role'][0] == 'on-field':
+                for x in owned_characters:
+                    if len(characters_info[x]['role']) == 1 and characters_info[x]['role'][0] == 'on-field':
+                        removed_characters.append(x)
+                        owned_characters.remove(x)
+
             print("added: " + char_name)
             return True
         return False
+    
+    if 'nilou' in owned_characters:
+        nilou_element_count = 0
+        for x in required_elements:
+            if 'hydro' in x or 'dendro' in x:
+                nilou_element_count += 1
+        if nilou_element_count < 3:
+            removed_characters.append('nilou')
+            owned_characters.remove('nilou')
+            
+    
+    if 'chevreuse' in owned_characters:
+        chevreuse_element_count = 0
+        for x in required_elements:
+            if 'pyro'in x or 'electro' in x:
+                chevreuse_element_count += 1
+        if chevreuse_element_count < 3:
+            removed_characters.append('chevreuse')  
+            owned_characters.remove('chevreuse')
+            
+    
+    for mandatory in mandatory_characters:
+         if mandatory in owned_characters:
+              add_if_fits_requirements(mandatory, check_elements = False, check_roles = False)
     
     for recommended in recommended_characters:
         if recommended in owned_characters and recommended not in team:
@@ -170,6 +221,7 @@ def find_team(main_character, owned_characters_original, selected_team_type):
             print(team)
             return team
 
+
     # 4. add non_recommended teammates with correct element but not role
     print("reached non-rec + ele")
     if len(required_elements) > 0:
@@ -211,6 +263,9 @@ def find_team(main_character, owned_characters_original, selected_team_type):
             print('Done. Team: ')
             print(team)
             return team
+    
+    for x in removed_characters:
+         owned_characters.append(x)
 
     # 7. add recommended characters regardless if satisfying criteria
     print("reached rec")
