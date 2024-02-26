@@ -32,7 +32,6 @@ def find_team(main_character, owned_characters_original, selected_team_type):
                 print('called')
                 for x in owned_characters:
                     if len(characters_info[x]['role']) == 1 and characters_info[x]['role'][0] == 'on-field':
-                        print('removed ' + x)
                         removed_characters.append(x)
                         owned_characters.remove(x)
                         
@@ -62,6 +61,7 @@ def find_team(main_character, owned_characters_original, selected_team_type):
                 group_counts[group_name] += 1
                 return True
         return False
+    
 
 
     # AT SOME POINT SORT THE OWNED CHARACTERS LISTS AND RECOMMENDED CHARACTERS LIST BY A TIER LIST ORDER BEFORE SORT
@@ -159,7 +159,6 @@ def find_team(main_character, owned_characters_original, selected_team_type):
             removed_characters.append('chevreuse')  
             owned_characters.remove('chevreuse')
             
-    
     for mandatory in mandatory_characters:
          if mandatory in owned_characters:
               add_if_fits_requirements(mandatory, check_elements = False, check_roles = False)
@@ -266,6 +265,36 @@ def find_team(main_character, owned_characters_original, selected_team_type):
     
     for x in removed_characters:
          owned_characters.append(x)
+    #after adding back in the removed characters, add them if they fit a needed element
+    print("reached rec + ele")
+    if len(required_elements) > 0:
+        for recommended in recommended_characters:
+            if recommended in owned_characters and recommended not in team:
+                add_if_fits_requirements(
+                    recommended, check_elements=True, check_roles=False
+                )
+    
+    if len(team) >= 4: 
+            print('Done. Team: ')
+            print(team)
+            return team
+
+
+    print("reached non-rec + ele")
+    if len(required_elements) > 0:
+        for non_recommended in owned_characters:
+            if non_recommended not in team:
+                add_if_fits_requirements(
+                    non_recommended, check_elements=True, check_roles=False
+                )
+
+    if len(team) >= 4: 
+            print('Done. Team: ')
+            print(team)
+            return team
+    
+
+
 
     # 7. add recommended characters regardless if satisfying criteria
     print("reached rec")
@@ -280,7 +309,6 @@ def find_team(main_character, owned_characters_original, selected_team_type):
             print(team)
             return team
     
-    # 8. add from a list of generally good characters
 
     # 9. add random characters if team not full
     print("reached random")

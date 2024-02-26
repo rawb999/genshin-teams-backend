@@ -4,43 +4,61 @@ characters_info_original = {
         "element": "anemo",
         "role": ["off-field", "buff", "heal", "def", "group"],
         "team_types": {
-            "Plunge Support": {
-                "required_roles": [["on-field"], ["off-field"], ["off-field"]],
-                "required_elements": [["pyro"], ["pyro"]],
+            "Xiao Support": {
+                "required_roles": [["on-field"], ["buff"], ["off-field"]],
+                "required_elements": [["anemo"]],
                 "recommended_teammates": [
                     "xiao",
+                    "faruzan",
+                    "furina",
+                    "bennett",
+                    "sucrose",
+                ],
+                "character_groups": {},
+                "character_groups_amounts": {},
+                "specific_combo": {},
+                "mandatory": ["xiao", "faruzan"],
+            },
+            "Vape Plunge Support": {
+                "required_roles": [["on-field"], ["off-field"], ["off-field"]],
+                "required_elements": [["pyro"], ["hydro"], ["hydro", "anemo"]],
+                "recommended_teammates": [
                     "gaming",
                     "diluc",
-                    "ayaka",
                     "hutao",
-                    "noelle",
-                    "razer",
                     "bennett",
                     "furina",
-                    "xiangling",
-                    "rosaria",
-                    "kaeya",
-                    "fischl",
-                    "yae",
-                    "zhongli",
-                    "layla",
+                    "yelan",
+                    "xingqiu",
+                    "kokomi",
+                    "kazuha",
+                    "sucrose",
+                    "venti",
                 ],
-                "character_groups": {
-                    "group1": [
-                        "xiao",
-                        "gaming",
-                        "diluc",
-                        "ayaka",
-                        "hutao",
-                        "noelle",
-                        "razer",
-                    ],
-                    "group2": ["zhongli", "layla"],
-                },
-                "character_groups_amounts": {"group1": 1, "group2": 1},
+                "character_groups": {},
+                "character_groups_amounts": {},
+                "specific_combo": {"pyro": ["on-field"]},
+                "mandatory": [],
+            },
+            "Plunge Support": {
+                "required_roles": [["on-field"], ["off-field"], ["off-field"]],
+                "required_elements": [["pyro", "cryo", "electro", "hydro"]],
+                "recommended_teammates": [
+                    "hutao",
+                    "diluc",
+                    "wriothesley",
+                    "ayaka",
+                    "bennett",
+                    "chongyun",
+                    "candace",
+                    "kazuha",
+                    "furina",
+                ],
+                "character_groups": {},
+                "character_groups_amounts": {},
                 "specific_combo": {},
                 "mandatory": [],
-            }
+            },
         },
     },
     "gaming": {
@@ -89,7 +107,7 @@ characters_info_original = {
                 "required_roles": [
                     ["on-field"],
                     ["off-field"],
-                    ["off-field", "on-field"],
+                    ["off-field"],
                 ],
                 "required_elements": [["pyro"], ["electro"], ["pyro", "electro"]],
                 "recommended_teammates": [
@@ -104,7 +122,7 @@ characters_info_original = {
                 "character_groups": {"group1": ["yoimiya", "lyney"]},
                 "character_groups_amounts": {"group1": 1},
                 "specific_combo": {},
-                "mandatory": ['bennett'],
+                "mandatory": ["bennett"],
             }
         },
     },
@@ -220,7 +238,7 @@ characters_info_original = {
         "role": ["on-field"],
         "team_types": {
             "Hypercarry": {
-                "required_roles": [["buff"], ["off-field"]],
+                "required_roles": [["buff"], ["shield"]],
                 "required_elements": [["anemo"]],
                 "recommended_teammates": [
                     "furina",
@@ -231,7 +249,7 @@ characters_info_original = {
                     "sayu",
                     "fischl",
                     "yae",
-                    "childe",
+                    "tartaglia",
                     "mona",
                     "xingqiu",
                     "yelan",
@@ -240,11 +258,8 @@ characters_info_original = {
                     "baizhu",
                     "layla",
                 ],
-                "character_groups": {
-                    "group1": ["furina", "kazuha", "venti", "sucrose", "jean", "sayu"],
-                    "group2": ["xingqiu", "yelan"],
-                },
-                "character_groups_amounts": {"group1": 1, "group2": 1},
+                "character_groups": {},
+                "character_groups_amounts": {},
                 "specific_combo": {},
                 "mandatory": [],
             },
@@ -346,8 +361,8 @@ characters_info_original = {
         "role": ["on-field"],
         "team_types": {
             "Mono Pyro": {
-                "required_roles": [["buff"], ["def"], ['off-field']],
-                "required_elements": [["pyro"]],
+                "required_roles": [["buff"], ["def"], ["off-field"]],
+                "required_elements": [["pyro"], ['pyro', 'anemo', 'geo'], ['pyro', 'anemo', 'geo']],
                 "recommended_teammates": [
                     "bennett",
                     "kazuha",
@@ -697,7 +712,8 @@ characters_info_original = {
                     "nilou",
                     "nahida",
                     "xingqiu",
-                    "yelan", "candace",
+                    "yelan",
+                    "candace",
                     "collei",
                     "dendTrav",
                     "kokomi",
@@ -742,7 +758,7 @@ characters_info_original = {
                 "character_groups": {},
                 "character_groups_amounts": {},
                 "specific_combo": {},
-                "mandatory": ['faruzan'],
+                "mandatory": ["faruzan"],
             }
         },
     },
@@ -803,7 +819,7 @@ characters_info_original = {
                 },
                 "character_groups_amounts": {"group1": 1, "group2": 1, "group3": 1},
                 "specific_combo": {"anemo": ["on-field"]},
-                "mandatory": ['wanderer'],
+                "mandatory": ["wanderer"],
             },
             "Xiao Hypercarry": {
                 "required_roles": [["on-field"], ["battery"]],
@@ -840,7 +856,7 @@ characters_info_original = {
                 },
                 "character_groups_amounts": {"group1": 1, "group2": 2},
                 "specific_combo": {"anemo": ["on-field"]},
-                "mandatory": ['xiao'],
+                "mandatory": ["xiao"],
             },
             "Anemo Quickswap": {
                 "required_roles": [["off-field"], ["off-field"], ["off-field"]],
@@ -968,7 +984,6 @@ characters_info_original = {
                     "keqing",
                     "razor",
                     "fischl",
-                    "beidou",
                     "ayato",
                     "kokomi",
                     "barbara",
@@ -1007,7 +1022,7 @@ characters_info_original = {
         "role": ["off-field"],
         "team_types": {
             "Bloom": {
-                "required_roles": [["off-field"], ["off-field"]],
+                "required_roles": [["heal"],["off-field"]],
                 "required_elements": [["dendro"], ["hydro"], ["dendro", "hydro"]],
                 "recommended_teammates": [
                     "kokomi",
@@ -1044,7 +1059,7 @@ characters_info_original = {
         "element": "electro",
         "role": ["on-field"],
         "team_types": {
-            "Quicken": {
+            "Hyperbloom": {
                 "required_roles": [["def"], ["off-field"], ["off-field"]],
                 "required_elements": [["dendro"], ["hydro"]],
                 "recommended_teammates": ["nahida", "baizhu", "xingqiu", "yelan"],
@@ -1056,7 +1071,7 @@ characters_info_original = {
                 "specific_combo": {},
                 "mandatory": [],
             },
-            "Bloom": {
+            "Aggravate": {
                 "required_roles": [["def"]],
                 "required_elements": [["dendro"], ["electro"]],
                 "recommended_teammates": [
@@ -1642,7 +1657,7 @@ characters_info_original = {
     "yunjin": {
         "rank": 3,
         "element": "geo",
-        "role": ["off-field", "buff"],
+        "role": ["off-field"],
         "team_types": {},
     },
     "itto": {
@@ -1679,7 +1694,7 @@ characters_info_original = {
     "gorou": {
         "rank": 3,
         "element": "geo",
-        "role": ["off-field", "def", "buff", "battery", "shield"],
+        "role": ["off-field", "def","shield"],
         "team_types": {
             "Geo Support": {
                 "required_roles": [["on-field"], ["off-field"], ["off-field"]],
@@ -1798,7 +1813,7 @@ characters_info_original = {
                 },
                 "character_groups_amounts": {"group1": 1, "group2": 1, "group3": 1},
                 "specific_combo": {},
-                "mandatory": ['bennett'],
+                "mandatory": ["bennett"],
             },
             "Hyperbloom": {
                 "required_roles": [["def"], ["off-field"]],
@@ -1811,7 +1826,7 @@ characters_info_original = {
                     "kokomi",
                     "xingqiu",
                     "yelan",
-                    "furina", 
+                    "furina",
                     "ayato",
                     "neuvillette",
                 ],
@@ -1847,7 +1862,7 @@ characters_info_original = {
                 "character_groups": {},
                 "character_groups_amounts": {},
                 "specific_combo": {"electro": ["on-field"]},
-                "mandatory": ['raiden'],
+                "mandatory": ["raiden"],
             },
             "Quicken Keqing": {
                 "required_roles": [["on-field"], ["off-field"], ["off-field"]],
@@ -1880,7 +1895,7 @@ characters_info_original = {
                 },
                 "character_groups_amounts": {"group1": 1, "group2": 1},
                 "specific_combo": {"electro": ["on-field"]},
-                "mandatory": ['keqing'],
+                "mandatory": ["keqing"],
             },
         },
     },
@@ -2024,7 +2039,8 @@ characters_info_original = {
                     "kokomi",
                     "mona",
                     "kazuha",
-                    "venti",
+                    "venti", 
+                    'charlotte'
                 ],
                 "character_groups": {
                     "group1": ["rosaria", "shenhe"],
@@ -2037,14 +2053,15 @@ characters_info_original = {
             },
             "Monocryo": {
                 "required_roles": [["def"], ["off-field"], ["off-field"]],
-                "required_elements": [["cryo"], ["cryo"], ["anemo"]],
+                "required_elements": [["cryo"], ["cryo", 'pyro'], ["anemo"]],
                 "recommended_teammates": [
                     "shenhe",
                     "diona",
                     "kazuha",
                     "rosaria",
                     "jean",
-                    "bennett",
+                    "charlotte",  
+                    'bennett'
                 ],
                 "character_groups": {},
                 "character_groups_amounts": {},
@@ -2154,7 +2171,7 @@ characters_info_original = {
     "yanfei": {
         "rank": 4,
         "element": "pyro",
-        "role": ["on-field", "off-field"],
+        "role": ["on-field", 'off-field', 'shield'],
         "team_types": {
             "Vaporize": {
                 "required_roles": [["off-field"], ["off-field"], ["off-field"]],
@@ -2359,7 +2376,7 @@ characters_info_original = {
                 },
                 "character_groups_amounts": {"group1": 1, "group2": 1, "group3": 1},
                 "specific_combo": {},
-                "mandatory": ['faruzan'],
+                "mandatory": ["faruzan"],
             }
         },
     },
@@ -3263,7 +3280,8 @@ characters_info_original = {
                     "alhaitham",
                     "xingqiu",
                     "yelan",
-                    "furinakuki",
+                    "furina", 
+                    "kuki",
                 ],
                 "character_groups": {
                     "group1": ["nahida", "alhaitham"],
