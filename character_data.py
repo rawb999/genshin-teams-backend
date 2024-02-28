@@ -1,3 +1,4 @@
+
 characters_info_original = {
     "xianyun": {
         "rank": 2,
@@ -339,7 +340,7 @@ characters_info_original = {
                     "diona",
                     "xingqiu",
                     "yelan",
-                    "furinakokomi",
+                    "furina, kokomi",
                     "furina",
                     "kazuha",
                     "jean",
@@ -425,7 +426,7 @@ characters_info_original = {
                 "required_roles": [["on-field"], ["off-field"], ["off-field"]],
                 "required_elements": [["electro"], ["electro", "dendro"]],
                 "recommended_teammates": [
-                    "alhaitham",
+                    'alhaitham',
                     "tighnari",
                     "nahida",
                     "dendTrav",
@@ -768,7 +769,7 @@ characters_info_original = {
         "role": ["off-field", "group", "heal", "def", "battery", "group"],
         "team_types": {
             "Wanderer Hypercarry": {
-                "required_roles": [["on-field"], ["def"], ["buff"]],
+                "required_roles": [["on-field"], ["def", 'buff'], ['buff']],
                 "required_elements": [],
                 "recommended_teammates": [
                     "wanderer",
@@ -1521,7 +1522,7 @@ characters_info_original = {
                     "group1": ["kazuha", "xiangling"],
                     "group2": ["sucrose", "heizou"],
                 },
-                "character_groups_amounts": {"group1": 1},
+                "character_groups_amounts": {"group1": 1, 'group2': 1},
                 "specific_combo": {},
                 "mandatory": [],
             },
@@ -3090,7 +3091,7 @@ characters_info_original = {
                 "mandatory": [],
             },
             "Electrocharged": {
-                "required_roles": [["on-field"], ["off-field"], ["heal"]],
+                "required_roles": [["on-field"], ["heal"], ["off-field"]],
                 "required_elements": [["hydro"], ["anemo"]],
                 "recommended_teammates": [
                     "xingqiu",
